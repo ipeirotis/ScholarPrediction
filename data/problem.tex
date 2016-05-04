@@ -1,0 +1,36 @@
+\section{Problem Definition}
+In this section, we will formally define the prediction problem that we solve.
+Conventionally, the scientific impact prediction problem is formulated as a regression problem predicting the total citation count of specific publication.
+However, a researcher's scholar performance should not be judged by a single publication.
+In this paper, we will generalize a new publication-level approach to predict the performance of a researcher in the near future.
+
+Following Yan et al.'s definition, the citation of a publication $p$ in a collection of publications $P$ is defined as follows.
+
+\begin{definition}
+Given a publication collection $P$, and a publication $p\in P$, the citations of a publication $p$ at time $t$
+\[C_T(p,t):=|citing(p,t)|,\]
+where
+\[citing(p):=\{\forall p'\in P, p' \textit{ cites } p \]
+\[\textit{ AND } p' \textit{ is published before } t \}.\]
+\end{definition}
+
+\begin{definition}
+The number of citation of a researcher $r$ at time(typically year) $t$ in a publication collection $P$
+\[N_c(r,t):=\sum_{\forall p \in P(r)} C_T(p,t),\]
+where
+\[P(r):=\{\forall p \in P, r \textit{ coauthored } p\}.\]
+\end{definition}
+
+As we have seen, multiple researches have been done on predicting $N_c(r,t)$ for a future time $t$.
+However, in our perspective, the predicting of citations that is accumulated only in the next few years
+will have a stronger representation of a researcher's activity and potential research performance.
+Therefore, our learning task is now defined as follows.
+
+\begin{definition}
+Given a set of researcher features, $\vec{X}=x_1,x_2,\cdots,x_n$, our goal is to learn a predictive function $f$ to predict the citation
+of a research between time $t$ and some time period $\delta t$ later. Define
+\[D_c(r,t,\Delta t):=N_c(r,t+\Delta t)-N_c(r,t)\]
+%difference in citations
+Formally, we are giving
+\[f(r|\vec{X},t,\Delta t)\rightarrow D_c(r,t,\Delta t).\]
+\end{definition}
