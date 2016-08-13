@@ -1,30 +1,59 @@
-\documentclass[journal,twocolumn]{ieeetran}
+\documentclass{sig-alternate}
+
+\setcopyright{acmcopyright}
 
 \usepackage{color}
-\usepackage[hidelinks]{hyperref}
-\usepackage{geometry}
+% \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{multicol}
-\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usepackage{pgfplots} % to draw axis
+\pgfplotsset{compat=1.13}
+% \usepackage{amsthm}
 \newtheorem{definition}{Definition}
 
-\geometry{letterpaper}
 
+
+\conferenceinfo{WSDM '17}{February 6--19, 2013, Cambridge, UK}
 
 
 \begin{document}
-\input{data/info}
-\input{data/abstract}
-\input{data/introduction}
-\input{data/related}
-\input{data/problem}
-\input{data/feature}
-\input{data/prediction}
-\input{data/experiment}
-\input{data/conclusion}
-\input{data/acknowledgement}
 
-\bibliographystyle{ieeetrans}
-\bibliography{data/bib}
+\title{Estimating the Lifetime Potential of Scholars\\ \textit{\Large Draft} }
+
+\numberofauthors{2}
+
+\author{
+% 1st. author
+\alignauthor
+Qi Feng\\
+       \affaddr{New York University}\\
+       \affaddr{New York, NY}\\
+       \email{qf264@nyu.edu}
+% 2nd. author
+\alignauthor
+Panos Ipeirotis\\
+       \affaddr{New York University}\\
+       \affaddr{New York, NY}\\
+       \email{panos@nyu.edu}
+}
+
+\maketitle
+
+\input{texfiles/abstract}
+\input{texfiles/1-introduction}
+\input{texfiles/related}
+\input{texfiles/problem}
+\input{texfiles/feature}
+\input{texfiles/prediction}
+\input{texfiles/experiment}
+\input{texfiles/conclusion}
+\input{texfiles/acknowledgement}
+
+\bibliographystyle{abbrv}
+\bibliography{texfiles/bib}
 
 \end{document}
+
+

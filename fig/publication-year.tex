@@ -1,0 +1,18 @@
+\begin{figure}
+\begin{center}
+\resizebox {\columnwidth} {!} {
+
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Year,
+	ylabel = Number of publication,
+]
+
+\addplot[color=blue] table[x={year}, y={count}]{data/publication-year};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Number of publications over year on Google Scholar.}
+\label{publicationcount-year}
+\end{center}
+\end{figure}

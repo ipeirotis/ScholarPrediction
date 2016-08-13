@@ -1,10 +1,10 @@
 \section{Problem Definition}
 In this section, we will formally define the prediction problem that we solve.
-Conventionally, the scientific impact prediction problem is formulated as a regression problem predicting the total citation count of specific publication.
-However, a researcher's scholar performance should not be judged by a single publication.
+As has been discussed before, predicting total number of citations in the future does not necessarily reflect the recent production and popularity of researchers. Therefore, predicting the number of citations during a given time frame of researchers will give a better sense of the recent productivity and popularity of researchers.
+
 In this paper, we will generalize a new publication-level approach to predict the performance of a researcher in the near future.
 
-Following Yan et al.'s definition, the citation of a publication $p$ in a collection of publications $P$ is defined as follows.
+Following Yan et al.'s definition\cite{yan2011citation}, the citation of a publication $p$ in a collection of publications $P$ is defined as follows.
 
 \begin{definition}
 Given a publication collection $P$, and a publication $p\in P$, the citations of a publication $p$ at time $t$
@@ -14,16 +14,18 @@ where
 \[\textit{ AND } p' \textit{ is published before } t \}.\]
 \end{definition}
 
+We define the number of citations of a researcher as the aggregation of citations of all his or her publications.
+
 \begin{definition}
-The number of citation of a researcher $r$ at time(typically year) $t$ in a publication collection $P$
+The number of citations of a researcher $r$ at time(typically year) $t$ in a publication collection $P$
 \[N_c(r,t):=\sum_{\forall p \in P(r)} C_T(p,t),\]
 where
 \[P(r):=\{\forall p \in P, r \textit{ coauthored } p\}.\]
+\label{def-author-citations}
 \end{definition}
 
-As we have seen, multiple researches have been done on predicting $N_c(r,t)$ for a future time $t$.
-However, in our perspective, the predicting of citations that is accumulated only in the next few years
-will have a stronger representation of a researcher's activity and potential research performance.
+In our perspective, the predicting of citations that is accumulated only in the next few years
+will have a stronger representation of a researcher's activeness and potential research performance.
 Therefore, our learning task is now defined as follows.
 
 \begin{definition}

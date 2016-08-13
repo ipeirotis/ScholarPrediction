@@ -1,7 +1,7 @@
-\section{Feature and Publication-level Approach}
-To generalize the prediction of scholar performance for individual authors, we incorporate conventional author features into our model.
-Additionally, a new feature that is given by the prediction from all publications a researcher published is included in our model as well.
-We introduce the details of features in this section.
+\section{Features}
+To generalize the prediction of research performance for researchers, conventional author features are incorporated into the prediction model.
+Additionally, a new feature that is given by the prediction from all publications of a researcher is utilized as well.
+Details of these chosen features are introduced in this section.
 
 \subsection{Conventional Researcher Features}
 \subsubsection{Organization Rank}
@@ -9,37 +9,44 @@ The prediction problem for each researcher intuitively depends on the organizati
 Prior researches have been devoted to examining the relation between citations counts and the rank of researchers' organization\cite{van2005fatal}.
 
 In our model, we will use the rank of the organization alone as a feature to represent the authority of an organization.
+
+\subsubsection{Professorship}
+Same reason as the organization rank, professorship should be considered when predicting future citations of a researcher intuitively. Professorships are simplified and divided into four ranks. Professor, Associate Professor, Assistant Professor and others respectively.
+
 \subsubsection{Historical Citations Counts $N_c(r,t)$}
 It is important to utilize historical records to predict future in a time series prediction task\cite{weigend1994time}.
 Therefore, we add $N_c(r,t_{now})$, $N_c(r,t_{now}-1)$, and $N_c(r,t_{now}-2)$ into our model.
-We also tried to $N_c(r,t_{now}-n), n\leq 3$ into our model, but found that, in this case, the regression algorithms are tend to overfit on the model,
-which should possibly result from newly published paper in recent years.
+The number of citations within a year (yearly citations) are also included in this model, that is,
+citations in current year
+$N_c(r,t_{now})-N_c(r,t_{now}-1)$, citations in last year $N_c(r,t_{now}-1)-N_c(r,t_{now}-2)$ and citations in the year before last year $N_c(r,t_{now}-2)-N_c(r,t_{now}-3)$.
+
 \subsubsection{h-index}
 As Hirsch pointed out\cite{hirsch2007does}, h-index has a good predictive power for $N_c(r,t)$.
 Besides that, h-index, when combined with $N_c(r,t)$, to predict $N_c(r,t+\Delta t)$ are better than the number of papers and the mean citations per paper.
 Therefore, we include this feature into our model as a feature combined with historical citation counts to give better prediction for next $\Delta t$ year citation counts.
 
-It is worth notice that the h-index, we used is the h-index for a researcher $r$ in year $t_now$.
+It is worth notice that the h-index, we used is the h-index for a researcher $r$ in year $t_{now}$.
+
 \subsubsection{i10-index}
-The i10-index indicates the number of academic publications an author has written that have at least ten citations from others.
+The $i10$-index indicates the number of academic publications an author has written that have at least ten citations from others.
 It was introduced in July 2011 by Google as part of their work on Google Scholar.\cite{delgado2014google}
 
-As is the same reason as h-index, we will include this feature in our prediction model.
+As is the same reason as h-index, we will include this feature in our prediction model. $i10$-index is also computed for each researcher in each year.
+
 \subsubsection{Active years}
 Active years, that is the number of years since publishing the first paper, is also an important factor to determine the future scientific performance.
 As is reported in the {\it Science} paper\cite{acuna2012future}, active years contributes as a negative factor in future h-index.
 Same reason here, when predicting the future total citations, it is also reasonable and important to incorporate this feature into the prediction model.
 
 \subsection{Publication-level Prediction}
-Following Rui Yan et al., we formulated a prediction model for publication citation prediction and used this model to generate a new feature for researchers.
+Following Yan et al.\cite{yan2011citation}, we formulated a prediction model for publication citation prediction and used this model to generate a new feature for researchers.
 
 In our publication citation prediction model, we incorporate the first author's feature, including author's organization rank, h-index, and i10-index, for each publication.
 Additionally, the historical citation of the certain publication is also considered to give predictions for the total number of citations of the given publication in the next $\Delta t$ years.
 It is important to find regression models which are appropriate for this specific problem.
 Linear regression(LR), decision forest regression(DFR), Poisson regression(PR), and regularized LR (namely LASSO and ridge regression) are trained with cross validation in our specific settings.
-Prediction results are shown in the next section.
 
-Finally, we will generate a new feature based on this publication-level prediction model in an intuitive way.
+Finally, a new feature based on this publication-level prediction model is constructed in an intuitive way.
 
 \begin{definition}
 The new feature is defined as estimated next $\Delta t$ year citations,
@@ -47,3 +54,5 @@ The new feature is defined as estimated next $\Delta t$ year citations,
 \[\hat{D_c}(r,t,\Delta t):=\sum_{\forall p \in P(r)} \textit{ Predicted number of}\]
 \[\textit{citations of } p \textit{ from } t \textit{ to } t+\Delta t.\]
 \end{definition}
+
+This new feature is incorporated in the model for a detailed assisting feature for author level citations prediction, since by definition\ref{def-author-citations}, the number of citations of a researcher is the sum of citations of all his or her publications.

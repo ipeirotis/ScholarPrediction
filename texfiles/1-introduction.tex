@@ -1,0 +1,16 @@
+\section{Introduction}
+Scientific research is becoming more and more influencing and has been creating a large collection of publications, especially in the past 50 years.
+Google Scholar service went online on November 20 2004, and is estimated to hold the metadata for roughly 8.7 million publications as of May 2016\cite{}.
+The growing size of publications over years is shown in figure \ref{publicationcount-year}.
+\input{fig/publication-year.tex}
+Predicting the impact of a publication meets the needs of researchers. The impact of a publication is conventionally represented by the number of citations over the years.
+However, research institutions and organizations are more interested on predicting and evaluating the overall performance of a researcher in the next several years.
+
+The influence of a researcher may result from multiple publication from wide range of fields or might from a single milestone publication that revolutionized the whole field as well. However, the influence is time variant. The popularity of a researcher will change over time. This might result from the popularity of a research field or a new theory come into the filed.
+The most direct and widely adopted evaluation of a researcher's scholar influence is his or her total citation counts. The number of citations and h-index can reflect the scholar and performance of a researcher in a lifetime scale\cite{bornmann2007we}. However, these indicators does not necessarily reflect a researchers recent and current scholar performance. Therefore, the number of citations in a short period of time is a better indicator of the recent scholar performance and influence of a researcher.
+
+Since the citations of publications shows a power law distribution, traditional regressions commonly gives poor results from publication citation data\cite{cheng2014can,radicchi2008universality}. 
+
+In our work, future citations counts are used as an indicator for research performance and popularity of a researcher. Our prediction task is to formulate a regression model for the number of citations a researcher get during a given time frame, based on the historical citation data and other author related features. We will present a unique two stage approach to formulate a prediction model on future citation counts for researchers. As we shall see in our work, the predicted future citations of publications will contribute a positive factor in predicting future citation counts for a researcher.
+
+To give a better prediction, a regression model for individual publications is first formulated, which is majorly based on Yan et al's work\cite{yan2011citation}. This model is then utilized to generate a predicted future citations of a researcher based on all publications he or she published before the given time.
