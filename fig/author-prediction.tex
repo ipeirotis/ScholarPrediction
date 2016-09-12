@@ -1,0 +1,18 @@
+\begin{figure}
+\begin{center}
+\resizebox {\columnwidth} {!} {
+
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Actual Citations,
+	ylabel = Predicted Citations,
+]
+
+\addplot[scatter] table[x={actual}, y={predicted}]{data/author-prediction};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Comparison of publication.}
+\label{author-prediction}
+\end{center}
+\end{figure}

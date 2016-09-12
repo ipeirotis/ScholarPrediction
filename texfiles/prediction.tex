@@ -1,8 +1,29 @@
 \section{Regression Models}
+In this section, we will describe regression models that are tested in our experiment.
 
 \subsection{Linear Regression}
 Linear Regression is an approach for modeling the relationship between a dependent variable $y$ and explanatory variables $X$ in a scalar way. A linear regression result has an equation of the following form, $Y = AX +b$. In this paper, researcher features are treated as explanatory variables and future citation counts are considered as dependent variable.
-\subsection{Decision Forest Regression}
+\subsection{Random Forest}
+Random Forest is an ensemble learning method by constructing a multitude of decision trees during training. The output of a random forest is the mode of classes of individual decision trees.
+
+In our experiments, we used bagging as the re-sample method, since bagging is reported to be resilient to noise features\cite{dietterich2000ensemble}.
+
+We tuned the number of trees and the maximum depth of the trees in $\{103,308,513,718,923\}$.
+We tuned the minimum number of re-sampling per leaf in $\{7,20,33,56,59\}$.
+
+\subsection{Boosted Decision Trees}
+Gradient boosting trees are an ensemble of decision trees via boosting. Boosting ensembles a series of weak classifiers, decision trees in our case, to formulate a learning model. Gradient boosting builds the model by allowing optimization of an arbitrary differentiable loss function\cite{friedman2002stochastic}.
+
+We tuned the minimum and maximum number of leaves per tree in $\{100,300,500,700,900\}$.
+We tuned the number of trees constructed in $\{1000,3000,5000,7000,9000\}$.
+We tuned the learning rate in $\{0.1,0.3,0.5,0.7,0.9\}$.
+
 \subsection{Poisson Regression}
-\subsection{LASSO and Ridge Regression}
-Regularized linear regression prevents model from over fitting on noisy data sets\cite{}.
+Poisson regression is a statistical regression model which assumes a Poisson distribution of the predicting label, i.e. the citation counts in this paper. As mentioned before, the distribution of citations of all authors falls into a Poisson distribution. Therefore, Poisson regression might find a fit in this prediction. However, we assume that Poisson regression will have a worse predicting performance than the previous mentioned ensemble learning methods, since the features in our dataset will not direct form a Poisson distribution on citation counts.
+
+We tuned the l2 regularization parameter in $\{10^{-i}, i = -2,-1,0\}$.
+We tuned the l1 regularization parameter in $\{0.0, 0.01, 0.1, 1.0\}$.
+
+\subsection{Ridge Regression}
+Regularized linear regression prevents model from over fitting on noisy data sets\cite{mohri2012foundations,tibshirani1996regression}.
+We use the ordinary least squares as the optimization method and tuned $\lambda$ in regularization from $\{10^{-i}, i = -2,-1,0,1,2\}.$

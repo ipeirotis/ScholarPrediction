@@ -1,33 +1,41 @@
 \begin{table*}[t]
 \begin{center}
-\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
 \hline
-& \multicolumn{5}{|c|}{\textbf{$\Delta t =1$}}& \multicolumn{5}{|c|}{$\Delta t =5$}& \multicolumn{5}{|c}{$\Delta t =10$}\\
+& \multicolumn{5}{|c|}{\textbf{$\Delta t =3$}}& \multicolumn{5}{|c}{$\Delta t =5$}\\
 
 \hline
-Methods & LR & DFR & PR & SVR & R& LR & DFR & PR & SVR & R& LR & DFR & PR & SVR & R\\
+Methods & LR & RF & PR & BDT & Ridge & LR & RF & PR & BDT & Ridge\\
 \hline\hline
-+org.Rank & & & & & & & & & & & & & & & \\
++org.Rank &-0.001 &-0.001 &0.000 &0.000 &-0.001 &0.004 &0.017 & 0.004 & 0.017 &0.004\\
 \hline
-+$N_c(r,t)$ & & & & & & & & & & & & & & & \\
++$N_c(r,t)$ & 0.791& 0.740& -4.161&0.727 &0.756 & 0.657 &	0.590 & -1.104 &0.570 &0.657\\
 \hline
-+index & & & & & & & & & & & & & & & \\
++yearly citation &0.811 &0.790 &0.403 &0.785 &0.811 & 0.651 &0.613 & -1.933 & 0.635 & 0.718\\
 \hline
-+years & & & & & & & & & & & & & & & \\
++index & 0.459&0.404 &0.070 &0.447 &0.459 &0.392 &0.318 &-1.915 & 0.372 &0.392\\
+\hline
++years &0.075 &0.075 & 0.060&0.076 &0.075 &0.058 & 0.066 &0.040 & 0.066 & 0.058\\
+\hline
++publication  &0.518 &0.832 &0.108 &0.822 & 0.518 & 0.614 &0.883 & -0.074 & 0.896 & 0.614\\
 \hline\hline
--org.Rank & & & & & & & & & & & & & & & \\
+-org.Rank &0.804 &0.869 &0.123 & 0.847&0.822 & 0.809 & 0.956 & -1.052 &0.945 & 0.809\\
 \hline
--$N_c(r,t)$ & & & & & & & & & & & & & & & \\
+-$N_c(r,t)$ &0.823 &0.882 &-0.315 &0.846 & 0.823 &0.814 &	0.952 & -0.984&0.938 & 0.814\\
 \hline
--index & & & & & & & & & & & & & & & \\
+-yearly citation &0.804 &0.866 & 0.374& 0.831&0.777 &0.810 & 0.951&-0.059 &0.936 &0.800\\
 \hline
--years & & & & & & & & & & & & & & & \\
+-index &0.796 &0.868 &-0.146 &0.853 & 0.814&0.800 & 0.929&0.281 &0.922 &0.801\\
+\hline
+-years &0.801 &0.865 &0.187 &0.832 & 0.819 &0.803 &0.942 & -1.042 & 0.942 &0.804\\
+\hline
+-publication & 0.791& 0.826& 0.205& 0.787&0.812 & 0.725 & 0.798 & -2.021 & 0.789 & 0.726\\
 \hline\hline
-Combined & & & & & & & & & & & & & & & \\
+Combined &0.804 &0.867 &0.153 &0.851 &0.822 &0.809&\textbf{0.957} &-1.130 &0.946 &0.809\\
 \hline
 \end{tabular}
 \end{center}
-\caption{The performance of various predictive models on the test set."+""-"}
+\caption{The performance of various models on test set. "+" stands for using only this feature. "-" stands for the drop of this feature group from all features.}
 \label{tbl-r2}
 
 \end{table*}
